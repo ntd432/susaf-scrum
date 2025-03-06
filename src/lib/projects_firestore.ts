@@ -2,7 +2,6 @@ import { db } from "./firebase";
 import { doc, collection, addDoc, getDocs, setDoc, deleteDoc } from "firebase/firestore";
 import { Project } from "./interfaces"
 
-// PROJECT
 const PROJECT_COLLECTION = "projects"
 
 export const createProject = async (project: Omit<Project, 'id'>): Promise<string> => {

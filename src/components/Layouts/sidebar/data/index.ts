@@ -61,6 +61,12 @@ export const NAV_DATA = [
           },
         ],
       },
+      {
+        title: "Retrospective",
+        icon: Icons.ChevronUp,
+        url: "/retrospective",
+        items: [],
+      },
     ],
   },
   {
