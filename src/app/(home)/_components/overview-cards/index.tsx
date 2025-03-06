@@ -4,44 +4,44 @@ import { OverviewCard } from "./card";
 import * as icons from "./icons";
 
 export async function OverviewCardsGroup() {
-  const { views, profit, products, users } = await getOverviewData();
+  const { workItems, tasksCompleted, sustainabilityPoints, storyPoints } = await getOverviewData();
 
   return (
     <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-4 2xl:gap-7.5">
       <OverviewCard
-        label="Total Views"
+        label="Total Work Items"
         data={{
-          ...views,
-          value: compactFormat(views.value),
+          ...workItems,
+          value: compactFormat(workItems.value),
         }}
-        Icon={icons.Views}
+        Icon={icons.TotalWorkItems}
       />
 
       <OverviewCard
-        label="Total Profit"
+        label="Tasks Completed"
         data={{
-          ...profit,
-          value: "$" + compactFormat(profit.value),
+          ...tasksCompleted,
+          value: compactFormat(tasksCompleted.value),
         }}
-        Icon={icons.Profit}
+        Icon={icons.TasksCompleted}
       />
 
       <OverviewCard
-        label="Total Products"
+        label="Story Points Completed"
         data={{
-          ...products,
-          value: compactFormat(products.value),
+          ...storyPoints,
+          value: compactFormat(storyPoints.value),
         }}
-        Icon={icons.Product}
+        Icon={icons.StoryPoints}
       />
 
       <OverviewCard
-        label="Total Users"
+        label="Sustainability Points Completed"
         data={{
-          ...users,
-          value: compactFormat(users.value),
+          ...sustainabilityPoints,
+          value: compactFormat(sustainabilityPoints.value),
         }}
-        Icon={icons.Users}
+        Icon={icons.SustainabilityPoints}
       />
     </div>
   );

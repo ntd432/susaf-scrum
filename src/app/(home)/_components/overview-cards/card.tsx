@@ -6,13 +6,14 @@ type PropsType = {
   label: string;
   data: {
     value: number | string;
-    growthRate: number;
+    percent: number;
   };
   Icon: (props: SVGProps<SVGSVGElement>) => JSX.Element;
 };
 
 export function OverviewCard({ label, data, Icon }: PropsType) {
-  const isDecreasing = data.growthRate < 0;
+  // const isDecreasing = data.growthRate < 0;
+  const percentage = data.percent * 100;
 
   return (
     <div className="rounded-[10px] bg-white p-6 shadow-1 dark:bg-gray-dark">
@@ -29,23 +30,17 @@ export function OverviewCard({ label, data, Icon }: PropsType) {
 
         <dl
           className={cn(
-            "text-sm font-medium",
-            isDecreasing ? "text-red" : "text-green",
+            "text-sm font-medium", "text-blue",
           )}
         >
           <dt className="flex items-center gap-1.5">
-            {data.growthRate}%
-            {isDecreasing ? (
-              <ArrowDownIcon aria-hidden />
-            ) : (
-              <ArrowUpIcon aria-hidden />
-            )}
+            {percentage}%
           </dt>
 
-          <dd className="sr-only">
+          {/* <dd className="sr-only">
             {label} {isDecreasing ? "Decreased" : "Increased"} by{" "}
             {data.growthRate}%
-          </dd>
+          </dd> */}
         </dl>
       </div>
     </div>

@@ -110,6 +110,23 @@ export function DotIcon(props: IconProps) {
   );
 }
 
+export function KebabMenuIcon(props: IconProps) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <g clipPath="url(#clip0_429_11122)">
+        <rect x="12" y="12" width="0.01" height="0.01" stroke="#292929" strokeWidth="3.75" strokeLinejoin="round"/>
+        <rect x="12" y="5" width="0.01" height="0.01" stroke="#292929" strokeWidth="3.75" strokeLinejoin="round"/>
+        <rect x="12" y="19" width="0.01" height="0.01" stroke="#292929" strokeWidth="3.75" strokeLinejoin="round"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_429_11122">
+          <rect width="24" height="24" fill="white" transform="translate(0 0.000915527)"/>
+        </clipPath>
+      </defs>
+    </svg>
+  )
+}
+
 export function TrendingUpIcon(props: IconProps) {
   return (
     <svg
