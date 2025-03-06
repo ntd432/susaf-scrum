@@ -1,7 +1,7 @@
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import type { Metadata } from "next";
 import { PersonalInfoForm } from "./_components/personal-info";
-import { UploadPhotoForm } from "./_components/upload-photo";
+import { TokenInputForm } from "./_components/upload-photo";
 
 export const metadata: Metadata = {
   title: "Settings Page",
@@ -17,7 +17,7 @@ export default function SettingsPage() {
           <PersonalInfoForm />
         </div>
         <div className="col-span-5 xl:col-span-2">
-          <UploadPhotoForm />
+          <TokenInputForm />
         </div>
       </div>
     </div>
