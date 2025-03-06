@@ -28,4 +28,11 @@ export interface BacklogItem {
     type: string;
     order: number;
     due_date: Timestamp;
+    assignee: string;
+}
+
+export interface User {
+    id: string;
+    name: string;
+    role: string;
 }
