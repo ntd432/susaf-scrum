@@ -9,16 +9,31 @@ export const NAV_DATA = [
         icon: Icons.HomeIcon,
         items: [
           {
-            title: "eCommerce",
+            title: "Product Backlog",
             url: "/",
           },
         ],
       },
       {
-        title: "Calendar",
-        url: "/calendar",
-        icon: Icons.Calendar,
-        items: [],
+        title: "Sprint",
+        //url: "/sprint",
+        icon: Icons.Alphabet,
+        items: [
+          {
+            title: "Sprint Planning",
+            url: "/sprint",
+          },
+          {
+            title: "Sprint Retrospective",
+            url: "/retrospective",
+          },
+        ],
+      },
+      {
+        title: "Settings",
+        url: "/pages/settings",
+        icon: Icons.Alphabet,
+        items: [], 
       },
       {
         title: "Profile",
@@ -73,36 +88,20 @@ export const NAV_DATA = [
     label: "OTHERS",
     items: [
       {
-        title: "Charts",
+        title: "Knowledge Hub",
         icon: Icons.PieChart,
         items: [
           {
-            title: "Basic Chart",
-            url: "/charts/basic-chart",
-          },
-        ],
-      },
-      {
-        title: "UI Elements",
-        icon: Icons.FourCircle,
-        items: [
-          {
-            title: "Alerts",
+            title: "User Manual",
             url: "/ui-elements/alerts",
           },
           {
-            title: "Buttons",
+            title: "FAQs",
             url: "/ui-elements/buttons",
           },
-        ],
-      },
-      {
-        title: "Authentication",
-        icon: Icons.Authentication,
-        items: [
           {
-            title: "Sign In",
-            url: "/auth/sign-in",
+            title: "Resources",
+            url: "/ui-elements/buttons",
           },
         ],
       },

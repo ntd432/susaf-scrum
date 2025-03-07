@@ -71,3 +71,62 @@ export function Users(props: SVGPropsType) {
     </svg>
   );
 }
+
+export function TotalWorkItems(props: SVGPropsType) {
+  return (
+    <svg width={58} height={58} viewBox="0 0 58 58" fill="none" {...props}>
+      <circle cx={29} cy={29} r={29} fill="#FFCC00" />
+      <rect x={18} y={22} width={22} height={14} fill="#fff" rx={2} />
+      <path d="M18 26h22" stroke="#000" strokeWidth={2} />
+      <path d="M24 22v-4h10v4" stroke="#000" strokeWidth={2} />
+    </svg>
+  );
+}
+
+export function TasksCompleted(props: SVGPropsType) {
+  return (
+    <svg width={58} height={58} viewBox="0 0 58 58" fill="none" {...props}>
+      <circle cx={29} cy={29} r={29} fill="#4CAF50" />
+      <path
+        d="M18 30l7 7 15-15"
+        stroke="#fff"
+        strokeWidth={4}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function StoryPoints(props: SVGPropsType) {
+  return (
+    <svg width={58} height={58} viewBox="0 0 58 58" fill="none" {...props}>
+      <circle cx={29} cy={29} r={29} fill="#2196F3" />
+      <path
+        d="M18 40h22M20 32h18M22 24h14M24 16h10"
+        stroke="#fff"
+        strokeWidth={3}
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function SustainabilityPoints(props: SVGPropsType) {
+  return (
+    <svg width={58} height={58} viewBox="0 0 58 58" fill="none" {...props}>
+      <circle cx={29} cy={29} r={29} fill="#2E7D32" />
+      <path
+        d="M29 16c0 8-6 8-6 16s6 8 6 8 6 0 6-8-6-8-6-16z"
+        fill="#fff"
+      />
+      <path
+        d="M29 50V38"
+        stroke="#fff"
+        strokeWidth={3}
+        strokeLinecap="round"
+      />
+      <circle cx={29} cy={29} r={4} fill="#fff" />
+    </svg>
+  );
+}

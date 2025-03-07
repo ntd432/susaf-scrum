@@ -14,23 +14,6 @@ export interface Sprint {
     end_date: Timestamp;
 }
 
-// export interface BacklogItem {
-//     id: string;
-//     definition_of_done: string;
-//     description: string;
-//     evaluation: string;
-//     priority: BacklogItemPriority;
-//     status: BacklogItemStatus;
-//     sustainability_point: number;
-//     sustainability_satisfied: boolean;
-//     sustainability_tag: Array<string>;
-//     title: string;
-//     type: BacklogItemType;
-//     order: number;
-//     due_date: Timestamp;
-//     assignee: string;
-// }
-
 export interface BacklogItem {
     id: string;
     backlog_title: string;
@@ -51,7 +34,6 @@ export interface User {
     name: string;
     role: string;
 }
-
 
 export enum BacklogItemStatus {
     Todo = "TODO",
