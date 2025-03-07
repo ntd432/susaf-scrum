@@ -1,6 +1,8 @@
+import {getBacklogItems, createBacklogItem} from "@/lib/backlog_item_firestore"
+import { BacklogItem, BacklogItemStatus, BacklogItemType } from "@/lib/interfaces";
+import { Timestamp } from "firebase/firestore";
 import Together from "together-ai";
 const together = new Together({ apiKey: "73a679a115a49a0e04a4f169d8d94584a46a57c149d7491354a5d3413cfdd927"});
-
 
 export const fetchBacklogData = async (token: string) => {
     const response = await fetch(`https://api.susaf.se4gd.eu/api/v1/effects/${token}`, {
@@ -22,6 +24,27 @@ export const fetchBacklogData = async (token: string) => {
     const refinedLLMdata = refineTheLLMData(result);
     return refinedLLMdata;
   };
+
+  export const saveBacklogData = async (result: any) => {
+    for (const itemData of result) {
+            const item: Omit<BacklogItem, 'id'> = {
+              backlog_title: itemData.backlog_title,
+              backlog_description: itemData.backlog_description,
+              priority: itemData.priority,
+              userstory_description: itemData.user_stories.userstory_description,
+              story_points: itemData.user_stories.story_points,
+              sustainability_point: itemData.user_stories.sustainability_points,
+              acceptance_criteria: itemData.user_stories.acceptance_criteria,
+              sustainability_criteria: itemData.user_stories.sustainability_criteria,
+              status: BacklogItemStatus.Todo,
+              type: BacklogItemType.Task,
+              due_date: Timestamp.fromDate(new Date())
+            };
+            console.log(await createBacklogItem(item));
+          }
+    
+          console.log(await getBacklogItems());
+  }
 
   const filterData = (data: any) => {
     return {
