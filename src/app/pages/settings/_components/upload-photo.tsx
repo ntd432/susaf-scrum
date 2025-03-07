@@ -2,6 +2,7 @@
 import { ShowcaseSection } from "@/components/Layouts/showcase-section";
 import { useState } from "react";
 import { fetchBacklogData } from "@/utils/api";
+import { saveBacklogData } from "@/utils/api";
 
 export function TokenInputForm() {
   const [token, setToken] = useState<string>('');
@@ -24,7 +25,9 @@ export function TokenInputForm() {
 
     try {
       const result = await fetchBacklogData(token);
+      await saveBacklogData(result);
       setApiData(result);
+      
       
     } catch (error) {
       console.error('Error fetching data:', error);

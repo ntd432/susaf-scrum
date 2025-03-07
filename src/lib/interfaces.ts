@@ -16,19 +16,17 @@ export interface Sprint {
 
 export interface BacklogItem {
     id: string;
-    definition_of_done: string;
-    description: string;
-    evaluation: string;
-    priority: BacklogItemPriority;
+    backlog_title: string;
+    backlog_description: string;
+    priority: string;
+    userstory_description: string;
+    story_points: string;
+    sustainability_point: string;
+    acceptance_criteria: string;
+    sustainability_criteria: string;
     status: BacklogItemStatus;
-    sustainability_point: number;
-    sustainability_satisfied: boolean;
-    sustainability_tag: Array<string>;
-    title: string;
     type: BacklogItemType;
-    order: number;
     due_date: Timestamp;
-    assignee: string;
 }
 
 export interface User {
