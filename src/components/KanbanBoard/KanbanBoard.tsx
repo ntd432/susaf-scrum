@@ -32,8 +32,13 @@ export function KanbanBoard() {
     const sourceColumnId = e.dataTransfer.getData("columnId");
 
     if (sourceColumnId !== targetColumnId) {
+      if(targetColumnId == "4"){
+        
+      }
       moveTask(taskId, sourceColumnId, targetColumnId);
     }
+
+    console.log("taskId, sourceColumnId, targetColumnId", taskId, sourceColumnId, targetColumnId);
   };
 
   const handleAddTaskClick = (columnId: string) => {

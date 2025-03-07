@@ -59,14 +59,14 @@ export function TokenInputForm() {
           </div>
         )}
 
-        {apiData && (
+        {/* {apiData && (
           <textarea
             className="w-full p-2 border rounded"
             rows={5}
             readOnly
             value={JSON.stringify(apiData, null, 2)}
           />
-        )}
+        )} */}
 
         <div className="flex justify-end gap-3">
           <button
