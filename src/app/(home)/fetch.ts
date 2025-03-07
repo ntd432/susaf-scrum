@@ -38,9 +38,9 @@ export async function getOverviewData(): Promise<OverviewData> {
 
     // Percent calculation example (you may change it based on how you calculate these percentages)
     var workItemsPercent = totalWorkItems / 200; // Example, change the denominator
-    var tasksCompletedPercent = Number((totalTasksCompleted / totalWorkItems).toFixed(4)); // Example, change the denominator
-    var sustainabilityPointsPercent = Number((totalSustainabilityPointsCompleted / totalSustainabilityPoints).toFixed(4)); // Example, change the denominator
-    var storyPointsPercent = Number((totalStoryPointsCompleted / totalStoryPoints).toFixed(4)); // Example, change the denominator
+    var tasksCompletedPercent = Number((totalTasksCompleted / totalWorkItems).toFixed(2)); // Example, change the denominator
+    var sustainabilityPointsPercent = Number((totalSustainabilityPointsCompleted / totalSustainabilityPoints).toFixed(2)); // Example, change the denominator
+    var storyPointsPercent = Number((totalStoryPointsCompleted / totalStoryPoints)).toFixed(2); // Example, change the denominator
 
     // Return the data
     return {
