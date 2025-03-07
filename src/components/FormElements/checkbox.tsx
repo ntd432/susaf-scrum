@@ -9,7 +9,6 @@ type PropsType = {
   name?: string;
   minimal?: boolean;
   checked?: boolean;
-  checked: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   radius?: "default" | "md";
 };
@@ -21,7 +20,6 @@ export function Checkbox({
   withBg,
   minimal,
   onChange,
-  checked,
   checked,
   radius,
 }: PropsType) {
