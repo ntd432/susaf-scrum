@@ -110,6 +110,40 @@ export function DotIcon(props: IconProps) {
   );
 }
 
+export function KebabMenuIcon(props: IconProps) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <g clipPath="url(#clip0_429_11122)">
+        <rect x="12" y="12" width="0.01" height="0.01" stroke="#292929" strokeWidth="3.75" strokeLinejoin="round"/>
+        <rect x="12" y="5" width="0.01" height="0.01" stroke="#292929" strokeWidth="3.75" strokeLinejoin="round"/>
+        <rect x="12" y="19" width="0.01" height="0.01" stroke="#292929" strokeWidth="3.75" strokeLinejoin="round"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_429_11122">
+          <rect width="24" height="24" fill="white" transform="translate(0 0.000915527)"/>
+        </clipPath>
+      </defs>
+    </svg>
+  )
+}
+
+export function LeafIcon(props: IconProps) {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="green"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c4.5 0 8.31-2.99 9.58-7.08.15-.5-.24-.92-.76-.92h-1.1c-.37 0-.68.26-.76.63C17.83 17.16 15.13 19 12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7c2.76 0 5.26 1.61 6.43 4.07.19.42.73.56 1.09.3l.9-.66c.34-.25.45-.72.25-1.09C18.83 4.68 15.61 2 12 2z"
+      />
+    </svg>
+  );
+}
+
 export function TrendingUpIcon(props: IconProps) {
   return (
     <svg
