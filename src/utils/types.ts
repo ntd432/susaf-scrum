@@ -5,7 +5,7 @@ export interface Task {
     description: string;
     dueDate: string;
     assignees: string[];
-    priority: BacklogItemPriority;
+    priority: "Low" | "Normal" | "High";
     subtasks: { id: string; title: string; completed: boolean }[];
     attachments: string[];
     status: BacklogItemStatus;
