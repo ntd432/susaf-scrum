@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 
 // Load the map dynamically to avoid SSR issues
-const WorldMap = dynamic(() => import("react-world-map"), { ssr: false });
+// const WorldMap = dynamic(() => import("react-world-map"), { ssr: false });
 
 export default function WorldOfSustainability() {
   const router = useRouter();
@@ -20,9 +20,9 @@ export default function WorldOfSustainability() {
       </div>
 
       {/* Interactive World Map */}
-      <div className="mt-8 w-full max-w-2xl">
+      {/* <div className="mt-8 w-full max-w-2xl">
         <WorldMap />
-      </div>
+      </div> */}
 
       {/* Button to Navigate to Sustainability Hub */}
       <button
