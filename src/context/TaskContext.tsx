@@ -1,7 +1,9 @@
-"use client";
+// "use client";
 
 import React, { createContext, useState, ReactNode } from "react";
 import { Task, Column } from "@/utils/types";
+import { getBacklogItems, updateBacklogItemStatus } from "@/lib/backlog_item_firestore";
+import { BacklogItemStatus } from "@/lib/interfaces";
 
 interface TaskContextType {
   columns: Column[];
@@ -12,13 +14,71 @@ interface TaskContextType {
 }
 
 export const TaskContext = createContext<TaskContextType | null>(null);
+const data: any = await getBacklogItems();
+console.log(data);
+
+const toDoTasks: Task[] = data
+.filter((task: any) => task.status === BacklogItemStatus.Todo) 
+    .map((task: any) => ({
+        id: task.id,
+        title: task.backlog_title,
+        description: task.userstory_description,
+        dueDate: new Date(task.due_date.seconds * 1000).toISOString(),
+        assignees: [],
+        priority: task.priority === "Low" ? "Low" : task.priority === "High" ? "High" : "Normal",
+        subtasks: [],
+        attachments: [],
+        status: task.status
+    }));
+
+const progressTasks: Task[] = data
+.filter((task: any) => task.status === BacklogItemStatus.InProgress) 
+    .map((task: any) => ({
+        id: task.id,
+        title: task.backlog_title,
+        description: task.userstory_description,
+        dueDate: new Date(task.due_date.seconds * 1000).toISOString(),
+        assignees: [],
+        priority: task.priority === "Low" ? "Low" : task.priority === "High" ? "High" : "Normal",
+        subtasks: [],
+        attachments: [],
+        status: task.status
+    }));
+
+const reviewTasks: Task[] = data
+.filter((task: any) => task.status === BacklogItemStatus.InReview) 
+    .map((task: any) => ({
+        id: task.id,
+        title: task.backlog_title,
+        description: task.userstory_description,
+        dueDate: new Date(task.due_date.seconds * 1000).toISOString(),
+        assignees: [],
+        priority: task.priority === "Low" ? "Low" : task.priority === "High" ? "High" : "Normal",
+        subtasks: [],
+        attachments: [],
+        status: task.status
+    }));
+
+const doneTasks: Task[] = data
+.filter((task: any) => task.status === BacklogItemStatus.Done) 
+    .map((task: any) => ({
+        id: task.id,
+        title: task.backlog_title,
+        description: task.userstory_description,
+        dueDate: new Date(task.due_date.seconds * 1000).toISOString(),
+        assignees: [],
+        priority: task.priority === "Low" ? "Low" : task.priority === "High" ? "High" : "Normal",
+        subtasks: [],
+        attachments: [],
+        status: task.status
+    }));
 
 export const TaskProvider = ({ children }: { children: ReactNode }) => {
   const [columns, setColumns] = useState<Column[]>([
-    { id: "1", title: "To Do", tasks: [] },
-    { id: "2", title: "In Progress", tasks: [] },
-    { id: "3", title: "In Review", tasks: [] },
-    { id: "4", title: "Completed", tasks: [] },
+    { id: "1", title: "To Do", tasks: toDoTasks },
+    { id: "2", title: "In Progress", tasks: progressTasks },
+    { id: "3", title: "In Review", tasks: reviewTasks },
+    { id: "4", title: "Completed", tasks: doneTasks },
   ]);
 
   const addTask = (columnId: string, task: Task) => {
@@ -61,6 +121,15 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
           return { ...col, tasks: col.tasks.filter((t) => t.id !== taskId) };
         }
         if (col.id === destinationColumnId) {
+          if (destinationColumn.title === "To Do")
+            task.status = BacklogItemStatus.Todo;
+          else if (destinationColumn.title === "In Progress")
+            task.status = BacklogItemStatus.InProgress;
+          else if (destinationColumn.title === "In Review")
+            task.status = BacklogItemStatus.InReview;
+          else task.status = BacklogItemStatus.Done;
+
+          updateBacklogItemStatus(task.id, task.status);
           return { ...col, tasks: [...col.tasks, task] };
         }
         return col;

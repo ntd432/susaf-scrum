@@ -1,13 +1,14 @@
+import { BacklogItemStatus, BacklogItemPriority } from "@/lib/interfaces";
 export interface Task {
     id: string;
     title: string;
     description: string;
     dueDate: string;
     assignees: string[];
-    priority: "Low" | "Normal" | "High";
+    priority: BacklogItemPriority;
     subtasks: { id: string; title: string; completed: boolean }[];
     attachments: string[];
-    status: "To Do" | "In Progress" | "In Review" | "Complete";
+    status: BacklogItemStatus;
   }
   
   export interface Column {
