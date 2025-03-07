@@ -6,14 +6,14 @@ type PropsType = {
   label: string;
   data: {
     value: number | string;
-    percent: number;
+    percent?: number;
   };
   Icon: (props: SVGProps<SVGSVGElement>) => JSX.Element;
 };
 
 export function OverviewCard({ label, data, Icon }: PropsType) {
   // const isDecreasing = data.growthRate < 0;
-  const percentage = data.percent * 100;
+  const percentage = data.percent ? data.percent * 100 : 0;
 
   return (
     <div className="rounded-[10px] bg-white p-6 shadow-1 dark:bg-gray-dark">
@@ -33,9 +33,12 @@ export function OverviewCard({ label, data, Icon }: PropsType) {
             "text-sm font-medium", "text-blue",
           )}
         >
-          <dt className="flex items-center gap-1.5">
-            {percentage}%
-          </dt>
+          {data.percent && (          
+            <dt className="flex items-center gap-1.5">
+              {percentage}%
+            </dt>
+          )}
+
 
           {/* <dd className="sr-only">
             {label} {isDecreasing ? "Decreased" : "Increased"} by{" "}

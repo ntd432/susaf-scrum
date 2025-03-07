@@ -30,37 +30,17 @@ export const NAV_DATA = [
         ],
       },
       {
-        title: "Settings",
-        url: "/pages/settings",
+        title: "Sustainability Hub",
+        url: "/sustainability",
         icon: Icons.Alphabet,
-        items: [], 
-      },
-      {
-        title: "Profile",
-        url: "/profile",
-        icon: Icons.User,
-        items: [],
-      },
-    ],
-  },
-  {
-    label: "OTHERS",
-    items: [
-      {
-        title: "Knowledge Hub",
-        icon: Icons.PieChart,
         items: [
-          {
-            title: "User Manual",
-            url: "/ui-elements/alerts",
+            {
+                title: "Product Manual",
+            url: "/sustainability/manual",
           },
           {
-            title: "FAQs",
-            url: "/ui-elements/buttons",
-          },
-          {
-            title: "Resources",
-            url: "/ui-elements/buttons",
+            title: "Sustainability Knowledge Update",
+            url: "/sustainability/knowledge",
           },
         ],
       },

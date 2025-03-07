@@ -1,26 +1,74 @@
-export async function getOverviewData() {
-  // Fake delay
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+import {
+  BacklogItemStatus
+} from "@/lib/interfaces"; // Import Firebase functions
+import { getBacklogItems } from "@/lib/backlog_item_firestore";
 
-  // Total Work Items, Tasks Completed, Story Points Completed, Sustainability Points Completed 
-  return {
-    workItems: {
-      value: 150,
-      percent: 1,
-    },
-    tasksCompleted: {
-      value: 5,
-      percent: 0.25,
-    },
-    sustainabilityPoints: {
-      value: 15,
-      percent: 0.10,
-    },
-    storyPoints: {
-      value: 24,
-      percent: 0.25,
-    },
+interface OverviewData {
+  workItems: {
+    value: number;
   };
+  tasksCompleted: {
+    value: number;
+    percent: number;
+  };
+  sustainabilityPoints: {
+    value: number;
+    percent: number;
+  };
+  storyPoints: {
+    value: number;
+    percent: number;
+  };
+}
+
+export async function getOverviewData(): Promise<OverviewData> {
+  try {
+    // Fetch data from Firestore (you may need to change the collection names based on your structure)
+    const allBacklogItems = await getBacklogItems();
+
+    // Calculate the values and percentages based on your logic
+    const totalWorkItems = allBacklogItems.length;
+    const doneItems = allBacklogItems.filter(item => item.status === BacklogItemStatus.Done);
+    const toDoItems = allBacklogItems.filter(item => item.status === BacklogItemStatus.Todo);
+    const totalTasksCompleted = doneItems.length;
+    const totalSustainabilityPointsCompleted = doneItems.reduce((sum, item) => sum + Number(item.sustainability_point), 0);
+    const totalSustainabilityPoints = toDoItems.reduce((sum, item) => sum + Number(item.sustainability_point), 0); // Or calculate from doc fields
+    const totalStoryPoints = toDoItems.reduce((sum, item) => sum + Number(item.story_points), 0);; // Or calculate from doc fields
+    const totalStoryPointsCompleted = doneItems.reduce((sum, item) => sum + Number(item.story_points), 0);; // Or calculate from doc fields
+
+    // Percent calculation example (you may change it based on how you calculate these percentages)
+    var workItemsPercent = totalWorkItems / 200; // Example, change the denominator
+    var tasksCompletedPercent = Number((totalTasksCompleted / totalWorkItems).toFixed(4)); // Example, change the denominator
+    var sustainabilityPointsPercent = Number((totalSustainabilityPointsCompleted / totalSustainabilityPoints).toFixed(4)); // Example, change the denominator
+    var storyPointsPercent = Number((totalStoryPointsCompleted / totalStoryPoints).toFixed(4)); // Example, change the denominator
+
+    // Return the data
+    return {
+      workItems: {
+        value: totalWorkItems
+      },
+      tasksCompleted: {
+        value: totalTasksCompleted,
+        percent: tasksCompletedPercent,
+      },
+      sustainabilityPoints: {
+        value: totalSustainabilityPointsCompleted,
+        percent: sustainabilityPointsPercent,
+      },
+      storyPoints: {
+        value: totalStoryPointsCompleted,
+        percent: storyPointsPercent,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching overview data: ", error);
+    return {
+      workItems: { value: 0 },
+      tasksCompleted: { value: 0, percent: 0 },
+      sustainabilityPoints: { value: 0, percent: 0 },
+      storyPoints: { value: 0, percent: 0 },
+    };
+  }
 }
 
 export async function getChatsData() {
