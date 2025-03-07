@@ -41,6 +41,53 @@ export const NAV_DATA = [
         icon: Icons.User,
         items: [],
       },
+<<<<<<< Updated upstream
+=======
+      {
+        title: "Forms",
+        icon: Icons.Alphabet,
+        items: [
+          {
+            title: "Form Elements",
+            url: "/forms/form-elements",
+          },
+          {
+            title: "Form Layout",
+            url: "/forms/form-layout",
+          },
+        ],
+      },
+      {
+        title: "Tables",
+        url: "/tables",
+        icon: Icons.Table,
+        items: [
+          {
+            title: "Tables",
+            url: "/tables",
+          },
+        ],
+      },
+      {
+        title: "Sustainability Hub",
+        url: "/sustainability",
+        icon: Icons.Alphabet,
+        items: [
+            {
+                title: "Product Manual",
+            url: "/sustainability/manual",
+          },
+          {
+            title: "Sustainability Knowledge Update",
+            url: "/sustainability/knowledge",
+          },
+      {
+            title: "FAQ",
+            url: "/faq/new",
+          },
+        ],
+      },
+>>>>>>> Stashed changes
     ],
   },
   {
