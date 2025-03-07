@@ -1,9 +1,12 @@
 import { getBacklogData } from "@/app/(home)/fetch";
+import { getBacklogItems } from "@/lib/backlog_item_firestore";
+import { BacklogItem } from "@/lib/interfaces";
 import { ProductBacklogTable } from "./table";
 
 
 export async function ProductBacklogOverview() {
-  const data: any = await getBacklogData();
+  // const data: any = await getBacklogData();
+  const data: BacklogItem[] = await getBacklogItems();
 
   return (
     <div className="col-span-12 rounded-[10px] bg-white py-6 shadow-1 dark:bg-gray-dark dark:shadow-card xl:col-span-4">
