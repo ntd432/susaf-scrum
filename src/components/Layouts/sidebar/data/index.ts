@@ -34,6 +34,12 @@ export const NAV_DATA = [
         icon: Icons.User,
         items: [],
       },
+      {
+        title: "Retrospective",
+        icon: Icons.ChevronUp,
+        url: "/retrospective",
+        items: [],
+      },
     ],
   },
   {
