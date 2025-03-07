@@ -16,9 +16,9 @@ export const TaskContext = createContext<TaskContextType | null>(null);
 export const TaskProvider = ({ children }: { children: ReactNode }) => {
   const [columns, setColumns] = useState<Column[]>([
     { id: "1", title: "To Do", tasks: [] },
-    { id: "2", title: "On Progress", tasks: [] },
-    { id: "3", title: "Need Review", tasks: [] },
-    { id: "4", title: "Complete", tasks: [] },
+    { id: "2", title: "In Progress", tasks: [] },
+    { id: "3", title: "In Review", tasks: [] },
+    { id: "4", title: "Completed", tasks: [] },
   ]);
 
   const addTask = (columnId: string, task: Task) => {
