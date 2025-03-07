@@ -3,7 +3,7 @@ import { useId } from "react";
 
 interface PropsType {
   label: string;
-  name: string;
+  name?: string;
   placeholder: string;
   required?: boolean;
   disabled?: boolean;
