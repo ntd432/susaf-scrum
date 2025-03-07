@@ -16,35 +16,29 @@ export const NAV_DATA = [
       },
       {
         title: "Sprint",
-        url: "/sprint",
+        //url: "/sprint",
         icon: Icons.Alphabet,
         items: [
           {
             title: "Sprint Planning",
-            url: "/forms/form-elements",
+            url: "/sprint",
           },
           {
             title: "Sprint Retrospective",
-            url: "/forms/form-layout",
+            url: "/retrospective",
           },
         ],
+      },
+      {
+        title: "Settings",
+        url: "/pages/settings",
+        icon: Icons.Alphabet,
+        items: [], 
       },
       {
         title: "Profile",
         url: "/profile",
         icon: Icons.User,
-        items: [],
-      },
-      {
-        title: "Retrospective",
-        icon: Icons.ChevronUp,
-        url: "/retrospective",
-        items: [],
-      },
-      {
-        title: "Retrospective",
-        icon: Icons.ChevronUp,
-        url: "/retrospective",
         items: [],
       },
     ],
