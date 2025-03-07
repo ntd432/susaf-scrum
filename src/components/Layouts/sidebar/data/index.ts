@@ -16,6 +16,7 @@ export const NAV_DATA = [
       },
       {
         title: "Sprint",
+        url: "/sprint",
         icon: Icons.Alphabet,
         items: [
           {
