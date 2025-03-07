@@ -164,6 +164,7 @@ export function EditTaskModal({ task, isOpen, onClose, onSave, setCheckbox1, set
   const [priority, setPriority] = useState<"Low" | "Normal" | "High">(task.priority);
   const [assignees, setAssignees] = useState<string[]>(task.assignees);
   const [newAssignee, setNewAssignee] = useState("");
+  
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

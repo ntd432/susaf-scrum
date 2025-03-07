@@ -9,7 +9,6 @@ import { Task } from "@/utils/types";
 
 export function KanbanBoard() {
   const { columns, addTask, editTask, deleteTask, moveTask } = useContext(TaskContext)!;
-
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [targetColumnId, setTargetColumnId] = useState<string>("");
@@ -39,12 +38,13 @@ export function KanbanBoard() {
         if(checkbox1 && checkbox2){
           moveTask(taskId, sourceColumnId, targetColumnId);
         }else{
-          alert("Please check both checkboxes before moving to Done column");
+          alert("You have to check both checkboxes before moving to Done column");
         }
+      }else{
+        moveTask(taskId, sourceColumnId, targetColumnId);
       }
     }
 
-    console.log("taskId, sourceColumnId, targetColumnId", taskId, sourceColumnId, targetColumnId);
   };
 
   const handleAddTaskClick = (columnId: string) => {
