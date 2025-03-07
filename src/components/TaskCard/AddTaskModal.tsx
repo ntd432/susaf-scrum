@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Task } from "@/utils/types";
 import { Modal } from "@/components/Modal/Modal";
+import { BacklogItemStatus } from "@/lib/interfaces";
 
 interface AddTaskModalProps {
   isOpen: boolean;
@@ -39,7 +40,7 @@ export function AddTaskModal({ isOpen, onClose, onAddTask }: AddTaskModalProps) 
       priority,
       subtasks: [],
       attachments: [],
-      status: "To Do", // Default status for new tasks
+      status: BacklogItemStatus.Todo, // Default status for new tasks
     };
     onAddTask(newTask);
     onClose();
