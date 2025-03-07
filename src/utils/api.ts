@@ -43,7 +43,7 @@ export const fetchBacklogData = async (token: string) => {
             console.log(await createBacklogItem(item));
           }
     
-          console.log(await getBacklogItems());
+          console.log();
   }
 
   const filterData = (data: any) => {
@@ -139,4 +139,62 @@ export const fetchBacklogData = async (token: string) => {
           else {
               console.log("No JSON found in the text.");
           }
+  }
+
+  const filterUserStories = (backlogItems: BacklogItem[]) => {
+    return backlogItems.map(item => ({
+      userstory_description: item.userstory_description,
+      story_points: item.story_points,
+      sustainability_points: item.sustainability_point,
+      acceptance_criteria: item.acceptance_criteria,
+      sustainability_criteria: item.sustainability_criteria,
+    }));
+  };
+
+
+  const generateSprit = async (userStories: any) => {
+    const prompt = `
+      This is my user story: 
+     ${JSON.stringify(userStories)}
+     From the these user story I need sprint goals. Ensures sustainability stories are included by suggesting sprint goals that align with sustainability objectives.. Give a short sprint goal that must align with my user story and ensures sustainability. I want to get the output in json.
+      [
+      "Sprint goal"
+      ] 
+    `;
+
+    try {
+      const res = await together.chat.completions.create({
+        messages: [
+          {
+            role: "user",
+            content: prompt,
+          }
+        ],
+        model: "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+        temperature: 0.7,
+        top_p: 0.7,
+        top_k: 50,
+        repetition_penalty: 1,
+        stop: ["<|eot_id|>", "<|eom_id|>"],
+        stream: true
+      });
+
+      let result = '';
+      for await (const token of res) {
+        result += token.choices[0]?.delta?.content || '';
+      }
+      
+      return result;
+
+    } catch (error) {
+      console.error('Error generating completion:', error);
+    }
+  };
+
+  export const generateSprintGoal = async () => {
+    const backlogItems = await getBacklogItems()
+    const userStories = filterUserStories(backlogItems);
+    const result = await generateSprit(userStories);
+    const refinedLLMdata = refineTheLLMData(result);
+    return refinedLLMdata;
   }
