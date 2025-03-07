@@ -14,6 +14,9 @@ export function KanbanBoard() {
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [targetColumnId, setTargetColumnId] = useState<string>("");
 
+  const [checkbox1, setCheckbox1] = useState(false);
+  const [checkbox2, setCheckbox2] = useState(false);
+
   // Handle drag start
   const handleDragStart = (e: React.DragEvent, taskId: string, columnId: string) => {
     e.dataTransfer.setData("taskId", taskId);
@@ -33,9 +36,12 @@ export function KanbanBoard() {
 
     if (sourceColumnId !== targetColumnId) {
       if(targetColumnId == "4"){
-        
+        if(checkbox1 && checkbox2){
+          moveTask(taskId, sourceColumnId, targetColumnId);
+        }else{
+          alert("Please check both checkboxes before moving to Done column");
+        }
       }
-      moveTask(taskId, sourceColumnId, targetColumnId);
     }
 
     console.log("taskId, sourceColumnId, targetColumnId", taskId, sourceColumnId, targetColumnId);
@@ -80,6 +86,10 @@ export function KanbanBoard() {
           isOpen={!!editingTask}
           onClose={() => setEditingTask(null)}
           onSave={editTask}
+          setCheckbox1={setCheckbox1}
+          setCheckbox2={setCheckbox2}
+          checkbox1={checkbox1}
+          checkbox2={checkbox2}
         />
       )}
     </div>

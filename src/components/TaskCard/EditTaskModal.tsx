@@ -148,14 +148,16 @@ import React, { useState } from "react";
 import { Task } from "@/utils/types";
 import { Modal } from "@/components/Modal/Modal";
 
-interface EditTaskModalProps {
-  task: Task;
-  isOpen: boolean;
-  onClose: () => void;
-  onSave: (taskId: string, updatedTask: Task) => void;
-}
+// interface EditTaskModalProps {
+//   task: Task;
+//   isOpen: boolean;
+//   onClose: () => void;
+//   onSave: (taskId: string, updatedTask: Task) => void;
+//   setCheckbox1: () => void;
+//   setCheckbox2: () => void;
+// }
 
-export function EditTaskModal({ task, isOpen, onClose, onSave }: EditTaskModalProps) {
+export function EditTaskModal({ task, isOpen, onClose, onSave, setCheckbox1, setCheckbox2, checkbox1, checkbox2 }: any) {
   const [title, setTitle] = useState(task.title);
   const [description, setDescription] = useState(task.description);
   const [dueDate, setDueDate] = useState(task.dueDate);
@@ -259,6 +261,31 @@ export function EditTaskModal({ task, isOpen, onClose, onSave }: EditTaskModalPr
                 </button>
               </span>
             ))}
+          </div>
+          <div className="mt-2">
+            <label className="block text-sm font-medium mb-1">Criteria</label>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="checkbox1"
+                  checked={checkbox1}
+                  onChange={(e) => setCheckbox1(e.target.checked)}
+                  className="h-4 w-4"
+                />
+                <label htmlFor="checkbox1" className="text-sm">Acceptance Criteria</label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="checkbox2"
+                  checked={checkbox2}
+                  onChange={(e) => setCheckbox2(e.target.checked)}
+                  className="h-4 w-4"
+                />
+                <label htmlFor="checkbox2" className="text-sm">Sustainability Criteria</label>
+              </div>
+            </div>
           </div>
         </div>
         <div className="flex justify-end gap-2">
