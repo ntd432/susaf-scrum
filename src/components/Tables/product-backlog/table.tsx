@@ -2,25 +2,19 @@
 
 import { useState } from "react";
 import { LeafIcon } from "@/assets/icons";
+import { BacklogItem } from "@/lib/interfaces";
 import { BacklogEditModal } from "@/components/Modals/backlog-edit-modal";
 
 type PropsType = {
-    data : [
-        {
-            backlog_title?: string;
-            backlog_description?: string;
-            priority?: string;
-        }
-    ]
-}
-
+    data: BacklogItem[];
+};
 
 export function ProductBacklogTable({ data }: PropsType) {
-    const [selectedWorkItem, setSelectedWorkItem] = useState<any | null>(null);
+    const [selectedWorkItem, setSelectedWorkItem] = useState<BacklogItem | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedItems, setSelectedItems] = useState<number[]>([]);
     
-    function handleClick(listItem: number, workItem: any) {
+    function handleClick(listItem: number, workItem: BacklogItem) {
         setSelectedWorkItem(workItem); 
         setIsModalOpen(true);
     }
@@ -75,7 +69,7 @@ export function ProductBacklogTable({ data }: PropsType) {
                 })}
             </ul>
             {/* Render modal only when an item is clicked */}
-            {isModalOpen && (
+            {isModalOpen && selectedWorkItem && (
                 <BacklogEditModal 
                     workItem={selectedWorkItem} 
                     onClose={() => setIsModalOpen(false)} 
