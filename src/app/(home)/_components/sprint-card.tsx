@@ -1,12 +1,15 @@
 import { cn } from "@/lib/utils";
 import { getSprintData } from "../fetch";
+import { getBacklogItems } from "@/lib/backlog_item_firestore";
+import { BacklogItem } from "@/lib/interfaces";
 
 type PropsType = {
     className: string;
 }
 
 export async function SprintCard() {
-  const data = await getSprintData();
+//   const data = await getSprintData();
+    const data: BacklogItem[] = await getBacklogItems();
 
   return (
     <div className="col-span-12 rounded-[10px] bg-white py-6 shadow-1 dark:bg-gray-dark dark:shadow-card xl:col-span-4">
@@ -25,7 +28,7 @@ export async function SprintCard() {
                             </h3>
                             <div className="flex items-center justify-between pr-7.5">
                                 <span className="text-blue-500 font-bold">{`Story Points: ${userStories.story_points}`}</span>
-                                <span className="text-green-500 font-bold">{`Sustainability Points: ${userStories.sustainability_points}`}</span>
+                                <span className="text-green-500 font-bold">{`Sustainability Points: ${userStories.sustainability_point}`}</span>
                             </div>
                             <div className="flex flex-wrap items-center gap-2">
                                 <span>
