@@ -1,9 +1,8 @@
-import { TopChannelsSkeleton } from "@/components/Tables/top-channels/skeleton";
 import { createTimeFrameExtractor } from "@/utils/timeframe-extractor";
 import { Suspense } from "react";
 import { OverviewCardsGroup } from "./_components/overview-cards";
 import { OverviewCardsSkeleton } from "./_components/overview-cards/skeleton";
-import { ProductBacklogCard } from "./_components/product-backlog";
+import { ProductBacklogOverview } from "@/components/Tables/product-backlog";
 import { SprintCard } from "./_components/sprint-card";
 
 type PropsType = {
@@ -24,7 +23,7 @@ export default async function Home({ searchParams }: PropsType) {
 
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-9 2xl:gap-7.5">
         <div className="col-span-12 xl:col-span-7">
-          <ProductBacklogCard />
+          <ProductBacklogOverview />
         </div>
         <div className="col-span-12 xl:col-span-5">
           <SprintCard />
