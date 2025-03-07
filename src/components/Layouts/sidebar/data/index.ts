@@ -30,18 +30,6 @@ export const NAV_DATA = [
         ],
       },
       {
-        title: "Settings",
-        url: "/pages/settings",
-        icon: Icons.Alphabet,
-        items: [], 
-      },
-      {
-        title: "Profile",
-        url: "/profile",
-        icon: Icons.User,
-        items: [],
-      },
-      {
         title: "Forms",
         icon: Icons.Alphabet,
         items: [
@@ -66,16 +54,7 @@ export const NAV_DATA = [
           },
         ],
       },
-      {
-        title: "Pages",
-        icon: Icons.Alphabet,
-        items: [
-          {
-            title: "Settings",
-            url: "/pages/settings",
-          },
-        ],
-      },
+
       {
         title: "Retrospective",
         icon: Icons.ChevronUp,
