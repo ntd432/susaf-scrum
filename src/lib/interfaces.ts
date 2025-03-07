@@ -39,7 +39,7 @@ export enum BacklogItemStatus {
     Todo = "TODO",
     InProgress = "IN_PROGRESS",
     Done = "DONE",
-    Blocked = "BLOCKED"
+    InReview = "IN_REVIEW"
 }
 
 export enum BacklogItemType {

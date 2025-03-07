@@ -1,6 +1,7 @@
 import { db } from "./firebase";
-import { doc, collection, addDoc, getDocs, setDoc, deleteDoc } from "firebase/firestore";
+import { doc, collection, addDoc, getDocs, setDoc, deleteDoc, updateDoc } from "firebase/firestore";
 import { BacklogItem } from "./interfaces"
+import { BacklogItemStatus } from "./interfaces";
 
 const BACKLOG_ITEM_COLLECTION = "backlog_items";
 
@@ -38,6 +39,21 @@ export const updateBacklogItem = async (item: BacklogItem): Promise<void> => {
     throw new Error("Failed to update backlog item");
   }
 };
+
+export const updateBacklogItemStatus = async (id: string, status: BacklogItemStatus): Promise<void> => {
+  try {
+  const itemRef = doc(db, BACKLOG_ITEM_COLLECTION, id);
+   
+      await updateDoc(itemRef, {
+        status: status, // Update only the status field
+      });
+   
+      console.log(`Backlog item with ID ${id} updated successfully to status: ${status}`);
+    } catch (error) {
+      console.error("Error updating backlog item status: ", error);
+      throw new Error("Failed to update backlog item status");
+    }
+  };
 
 export const deleteBacklogItem = async (itemId: string): Promise<void> => {
   try {
