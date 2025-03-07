@@ -43,23 +43,31 @@ export const NAV_DATA = [
           },
         ],
       },
-      {
-        title: "Tables",
-        url: "/tables",
-        icon: Icons.Table,
-        items: [
-          {
-            title: "Tables",
-            url: "/tables",
-          },
-        ],
-      },
 
       {
         title: "Retrospective",
         icon: Icons.ChevronUp,
         url: "/retrospective",
         items: [],
+      },
+      {
+        title: "Sustainability Hub",
+        url: "/sustainability",
+        icon: Icons.Alphabet,
+        items: [
+            {
+                title: "Product Manual",
+            url: "/sustainability/manual",
+          },
+          {
+            title: "Sustainability Knowledge Update",
+            url: "/sustainability/knowledge",
+          },
+      {
+            title: "FAQ",
+            url: "/faq/new",
+          },
+        ],
       },
     ],
   },
